@@ -3,13 +3,12 @@
 public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 3f;
-    CharacterController controller;
     [SerializeField] Animator anim;    //Uday noob
 
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        
     }
 
     // Update is called once per frame
