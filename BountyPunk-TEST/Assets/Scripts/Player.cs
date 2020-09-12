@@ -52,4 +52,5 @@ public class Player : MonoBehaviour
         anim.SetFloat("Running", deltaX);
         
     }
+    //gg what is up what is up
 }
