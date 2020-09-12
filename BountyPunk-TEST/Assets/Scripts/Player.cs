@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 3f;
     CharacterController controller;
-    [SerializeField] Animator anim;
+    [SerializeField] Animator anim;    //Uday Don
 
     // Start is called before the first frame update
     void Start()
