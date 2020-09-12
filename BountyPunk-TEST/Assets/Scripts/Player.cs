@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float moveSpeed = 3f;
     CharacterController controller;
     [SerializeField] Animator anim;
 
@@ -17,14 +17,15 @@ public class Player : MonoBehaviour
     {
         ChareterControllerMove();
         //Move();
-        anim.SetBool("Running", false);
+        
+        
     }
 
     private void ChareterControllerMove()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-
+       
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude >= 0.1f)
@@ -32,6 +33,11 @@ public class Player : MonoBehaviour
             controller.Move(direction * moveSpeed * Time.deltaTime);
             anim.SetBool("Running", true);
         }
+        else
+        {
+            anim.SetBool("Running", false);
+        }
+        
     }
 
     void Move()
