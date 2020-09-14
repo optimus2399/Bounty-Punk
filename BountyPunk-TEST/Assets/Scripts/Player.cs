@@ -4,17 +4,35 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] Animator anim;    //Uday noob
+    private Camera mainCamera;
+    float rayLenght;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        mainCamera = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        
+
+    }
+
+    private void PlayerLookAt()
+    {
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+        if (groundPlane.Raycast(cameraRay, out rayLenght))
+        {
+            Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
+            Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
+
+            transform.LookAt(new Vector3(pointToLook.x, 0f, pointToLook.z));
+        }
     }
 
     void Move()
@@ -41,7 +59,8 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("Running", false);
         }
-        
+        PlayerLookAt();
+
     }
     //gg what is up what is up
 }
