@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private Camera mainCamera;
     float rayLenght;
     bool isAiming = false;
+    bool isMoving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,16 +21,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            isAiming = true;
-        }
-        else if(Input.GetMouseButtonUp(1))
-        {
-            isAiming = false;
-        }
-        
+        CheckAiming();
     }
 
     private void PlayerLookAt()
@@ -43,6 +35,38 @@ public class Player : MonoBehaviour
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
 
             transform.LookAt(new Vector3(pointToLook.x, 0f, pointToLook.z));
+        }
+    }
+
+    private void CheckAiming()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            isAiming = true;
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            isAiming = false;
+        }
+
+
+        if (isAiming)
+        {
+            PlayerLookAt();
+            if (isMoving)
+            {
+                anim.SetBool("RunningAim", true);
+            }
+            else
+            {
+                anim.SetBool("RunningAim", false);
+                anim.SetBool("Aiming", true);
+            } 
+        }
+        else if(!isAiming)
+        {
+            anim.SetBool("Aiming", false);
+            anim.SetBool("RunningAim", false);
         }
     }
 
@@ -63,28 +87,25 @@ public class Player : MonoBehaviour
        
         if (direction.magnitude >= 0.1f)
         {
-            
+            isMoving = true;
             //player rotation 
             PLayerRotaionWithMovement(direction);
 
             //player movement and animation.
             transform.position = new Vector3(newXPos, newYPos, newZPos);
-            anim.SetBool("Running", true);
+            if (!isAiming)
+            {
+                anim.SetBool("Running", true);
+            }
             
         }
         else
         {
+            isMoving = false;
             anim.SetBool("Running", false);
         }
 
-        if (isAiming)
-        {
-            PlayerLookAt();
-        }
         
-
-        
-
     }
 
     private void PLayerRotaionWithMovement(Vector3 direction)
