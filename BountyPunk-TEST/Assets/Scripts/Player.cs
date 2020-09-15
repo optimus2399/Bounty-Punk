@@ -4,8 +4,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] Animator anim;    //Uday noob
+    [SerializeField] float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
     private Camera mainCamera;
     float rayLenght;
+    bool isAiming = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,8 +20,16 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-        
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            isAiming = true;
+        }
+        else if(Input.GetMouseButtonUp(1))
+        {
+            isAiming = false;
+        }
+        
     }
 
     private void PlayerLookAt()
@@ -49,18 +60,38 @@ public class Player : MonoBehaviour
 
         var direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        
-        if(direction.magnitude >= 0.1f)
+       
+        if (direction.magnitude >= 0.1f)
         {
+            
+            //player rotation 
+            PLayerRotaionWithMovement(direction);
+
+            //player movement and animation.
             transform.position = new Vector3(newXPos, newYPos, newZPos);
             anim.SetBool("Running", true);
+            
         }
         else
         {
             anim.SetBool("Running", false);
         }
-        PlayerLookAt();
+
+        if (isAiming)
+        {
+            PlayerLookAt();
+        }
+        
+
+        //PlayerLookAt();
 
     }
-    //gg what is up what is up
+
+    private void PLayerRotaionWithMovement(Vector3 direction)
+    {
+        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+        transform.rotation = Quaternion.Euler(0, angle, 0);
+    }
+    //gg what is up what is up//
 }
