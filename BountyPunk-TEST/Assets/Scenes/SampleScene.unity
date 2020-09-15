@@ -335,7 +335,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &993032663
 MonoBehaviour:
@@ -351,6 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   anim: {fileID: 993032661}
+  turnSmoothTime: 0.1
 --- !u!136 &993032665
 CapsuleCollider:
   m_ObjectHideFlags: 0
