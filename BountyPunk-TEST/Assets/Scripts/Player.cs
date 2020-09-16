@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     bool isAiming = false;
     bool isMoving = false;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,15 +73,16 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 moveDirection = new Vector3(horizontal, 0f, vertical);
 
         var deltaX = horizontal * Time.deltaTime*moveSpeed;
         var deltaZ = vertical * Time.deltaTime*moveSpeed;
 
         var newXPos = transform.position.x + deltaX;
         var newZPos = transform.position.z + deltaZ;
-        var newYPos = transform.position.y;
+        var newYPos = transform.position.y; 
 
         var direction = new Vector3(horizontal, 0f, vertical).normalized;
 
@@ -93,6 +95,7 @@ public class Player : MonoBehaviour
 
             //player movement and animation.
             transform.position = new Vector3(newXPos, newYPos, newZPos);
+            
             if (!isAiming)
             {
                 anim.SetBool("Running", true);
