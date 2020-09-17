@@ -5,6 +5,10 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] Animator anim;    //Uday noob
     [SerializeField] float turnSmoothTime = 0.1f;
+    [SerializeField] GameObject pistolPrefab;
+    [SerializeField] Transform pistolPos;
+    GameObject pistol;
+    [SerializeField] GameObject bulletPrefab;
     private float turnSmoothVelocity;
     private Camera mainCamera;
     float rayLenght;
@@ -41,15 +45,26 @@ public class Player : MonoBehaviour
 
     private void CheckAiming()
     {
+        
         if (Input.GetMouseButtonDown(1))
         {
             isAiming = true;
+            pistol = Instantiate(pistolPrefab,pistolPos) as GameObject;
+            
         }
         else if (Input.GetMouseButtonUp(1))
         {
             isAiming = false;
+            Destroy(pistol);
         }
 
+        if (pistol)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                GameObject bullet = Instantiate(bulletPrefab, pistol.transform.position , pistol.transform.rotation) as GameObject;
+            }
+        }
 
         if (isAiming)
         {
