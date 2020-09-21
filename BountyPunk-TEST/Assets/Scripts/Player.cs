@@ -90,18 +90,18 @@ public class Player : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 moveDirection = new Vector3(horizontal, 0f, vertical);
+        
 
         var deltaX = horizontal * Time.deltaTime*moveSpeed;
         var deltaZ = vertical * Time.deltaTime*moveSpeed;
 
-        var newXPos = transform.position.x + deltaX;
+        var newXPos = transform.position.x + deltaX ;
         var newZPos = transform.position.z + deltaZ;
         var newYPos = transform.position.y; 
 
         var direction = new Vector3(horizontal, 0f, vertical).normalized;
+        
 
-       
         if (direction.magnitude >= 0.1f)
         {
             isMoving = true;

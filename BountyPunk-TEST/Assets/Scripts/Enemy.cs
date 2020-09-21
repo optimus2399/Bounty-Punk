@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Animator anim;
+    [SerializeField] Transform enemyPistolPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +32,10 @@ public class Enemy : MonoBehaviour
         {
             anim.SetBool("EnemyShoot", false);
         }
+    }
+
+    public void Fire()
+    {
+
     }
 }
