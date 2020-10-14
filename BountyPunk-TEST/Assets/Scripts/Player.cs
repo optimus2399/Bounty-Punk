@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TreeEditor;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -14,12 +15,18 @@ public class Player : MonoBehaviour
     float rayLenght;
     bool isAiming = false;
     bool isMoving = false;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
+
+        var rot = transform.rotation.eulerAngles;
+        rot.z = 0;
+        transform.rotation = Quaternion.Euler(rot);
+        
     }
 
     // Update is called once per frame
@@ -27,6 +34,7 @@ public class Player : MonoBehaviour
     {
         Move();
         CheckAiming();
+        
     }
 
     private void PlayerLookAt()
@@ -39,7 +47,7 @@ public class Player : MonoBehaviour
             Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
 
-            transform.LookAt(new Vector3(pointToLook.x, 0f, pointToLook.z));
+            transform.LookAt(new Vector3(pointToLook.x,transform.position.y, pointToLook.z));
         }
     }
 
