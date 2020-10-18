@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 3f;
-    [SerializeField] Animator anim;    //Uday noob
+    [SerializeField] float moveSpeed = 14f;
+    [SerializeField] Animator anim;   
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] GameObject pistolPrefab;
     [SerializeField] Transform pistolPos;
@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     float rayLenght;
     bool isAiming = false;
     bool isMoving = false;
-    
+  
+
 
 
     // Start is called before the first frame update
@@ -98,8 +99,8 @@ public class Player : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+     
         
-
         var deltaX = horizontal * Time.deltaTime*moveSpeed;
         var deltaZ = vertical * Time.deltaTime*moveSpeed;
 
@@ -117,7 +118,8 @@ public class Player : MonoBehaviour
             PLayerRotaionWithMovement(direction);
 
             //player movement and animation.
-            transform.position = new Vector3(newXPos, newYPos, newZPos);
+             transform.position = new Vector3(newXPos, newYPos, newZPos);
+            
             
             if (!isAiming)
             {
@@ -140,5 +142,5 @@ public class Player : MonoBehaviour
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         transform.rotation = Quaternion.Euler(0, angle, 0);
     }
-    //gg what is up what is up//
+    
 }
