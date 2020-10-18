@@ -6,14 +6,11 @@ using UnityEngine.AI;
 
 public class Patrol : EnemyBaseSM
 {
-    
-    GameObject[] waypoints;
     int currentWP;
-    float accuracy = 2f;
 
     private void Awake()
     {
-        waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+        
     }
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -37,7 +34,12 @@ public class Patrol : EnemyBaseSM
                 currentWP = 0;
             }
         }
-        agent.SetDestination(waypoints[currentWP].transform.position);
+        //agent.SetDestination(waypoints[currentWP].transform.position);
+
+        var direction = waypoints[currentWP].transform.position - enemy.transform.position;
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed* Time.deltaTime);
+        enemy.transform.Translate(0f, 0f, moveSpeed *Time.deltaTime);
+        
         
     }
 

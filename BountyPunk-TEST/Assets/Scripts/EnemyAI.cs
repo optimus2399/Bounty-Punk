@@ -2,22 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("Refrences")]
+
     public GameObject player;
     public NavMeshAgent agent;
     Animator anim;
     public GameObject pistol;
     public GameObject bullet;
     public GameObject firePoint;
+    GameObject[] waypoints;
 
+    [Header("AI Settings")]
 
+    public float accuracy = 2f;
+    public float moveSpeed = 5f;
+    public float rotationSpeed = 2f;
+    
     public GameObject GetPlayer() { return player; }
     public NavMeshAgent GetAgent() { return agent; }
     public GameObject GetPistol() { return pistol; }
     public GameObject GetBullet() { return bullet; }
     public GameObject GetFirePoint() { return firePoint; }
+    public float GetMoveSpeed() { return moveSpeed; }
+    public float GetAccuracy() { return accuracy; }
+    public float GetRotationSpeed() { return rotationSpeed; }
+    public GameObject[] GetWaypoints() { return waypoints; }
 
    public void Fire()
     {
@@ -33,9 +46,15 @@ public class EnemyAI : MonoBehaviour
         CancelInvoke("Fire");
     }
     // Start is called before the first frame update
-   void Start()
+
+    private void Awake()
+    {
+        waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+    }
+    void Start()
     {
         anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame

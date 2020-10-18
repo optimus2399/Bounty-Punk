@@ -16,7 +16,9 @@ public class Shoot : EnemyBaseSM
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemy.transform.LookAt(player.transform.position);
+        var direction = player.transform.position - enemy.transform.position;
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(direction), 5f * Time.deltaTime);
+        //enemy.transform.LookAt(new Vector3(player.transform.position.x,enemy.transform.position.y,player.transform.position.z));
         gun.transform.position = firePoint.transform.position;
         gun.transform.rotation = firePoint.transform.rotation;
     }

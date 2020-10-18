@@ -7,17 +7,22 @@ public class Chase : EnemyBaseSM
 {
     GameObject gun;
     
+    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         gun =  Instantiate(pistol, firePoint.transform.position,firePoint.transform.rotation) as GameObject;
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        agent.SetDestination(player.transform.position);
+        var direction = player.transform.position - enemy.transform.position;
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
+        enemy.transform.Translate(0f, 0f, moveSpeed * Time.deltaTime);
+        //agent.SetDestination(player.transform.position);
         gun.transform.position = firePoint.transform.position;
         gun.transform.rotation = firePoint.transform.rotation;
     }
