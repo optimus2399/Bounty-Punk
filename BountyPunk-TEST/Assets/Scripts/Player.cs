@@ -9,19 +9,25 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject pistolPrefab;
     [SerializeField] Transform pistolPos;
     GameObject pistol;
+    Rigidbody rb;
+    Vector3 movement;
     [SerializeField] GameObject bulletPrefab;
     private float turnSmoothVelocity;
     private Camera mainCamera;
     float rayLenght;
     bool isAiming = false;
     bool isMoving = false;
-  
+    public Transform cam;
+    private Vector3 velocity;
+ 
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
 
         var rot = transform.rotation.eulerAngles;
@@ -97,18 +103,12 @@ public class Player : MonoBehaviour
 
     void Move()
     {
+        //transform.Translate(velocity);
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-     
-        
-        var deltaX = horizontal * Time.deltaTime*moveSpeed;
-        var deltaZ = vertical * Time.deltaTime*moveSpeed;
 
-        var newXPos = transform.position.x + deltaX ;
-        var newZPos = transform.position.z + deltaZ;
-        var newYPos = transform.position.y; 
 
-        var direction = new Vector3(horizontal, 0f, vertical).normalized;
+        var direction = new Vector3(horizontal, 0f, vertical);
         
 
         if (direction.magnitude >= 0.1f)
@@ -116,11 +116,14 @@ public class Player : MonoBehaviour
             isMoving = true;
             //player rotation 
             PLayerRotaionWithMovement(direction);
+            
+
 
             //player movement and animation.
-             transform.position = new Vector3(newXPos, newYPos, newZPos);
-            
-            
+            // transform.position = new Vector3(newXPos, newYPos, newZPos);
+
+
+
             if (!isAiming)
             {
                 anim.SetBool("Running", true);
@@ -138,9 +141,13 @@ public class Player : MonoBehaviour
 
     private void PLayerRotaionWithMovement(Vector3 direction)
     {
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg+cam.eulerAngles.y;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         transform.rotation = Quaternion.Euler(0, angle, 0);
+        Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.deltaTime);
     }
+
+
     
 }
