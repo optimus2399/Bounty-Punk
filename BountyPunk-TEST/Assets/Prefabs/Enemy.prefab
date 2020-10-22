@@ -783,6 +783,9 @@ MonoBehaviour:
   pistol: {fileID: 5125451224476002693, guid: 306a273d47f9d05418a4f24e22aaba49, type: 3}
   bullet: {fileID: 5674712307539860624, guid: 85b6773d8d9dfcd4f9799320e886a091, type: 3}
   firePoint: {fileID: 1517668351330107041}
+  accuracy: 2
+  moveSpeed: 10
+  rotationSpeed: 3
 --- !u!1 &6612691750235925460
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject bullet;
     public GameObject firePoint;
     GameObject[] waypoints;
+    Rigidbody rb;
 
     [Header("AI Settings")]
 
@@ -31,6 +32,7 @@ public class EnemyAI : MonoBehaviour
     public float GetAccuracy() { return accuracy; }
     public float GetRotationSpeed() { return rotationSpeed; }
     public GameObject[] GetWaypoints() { return waypoints; }
+    public Rigidbody GetRigidBody() { return rb; }
 
    public void Fire()
     {

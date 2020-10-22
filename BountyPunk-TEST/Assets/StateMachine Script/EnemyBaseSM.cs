@@ -16,6 +16,7 @@ public class EnemyBaseSM : StateMachineBehaviour
     public float accuracy;
     public float moveSpeed;
     public float rotationSpeed;
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -30,6 +31,7 @@ public class EnemyBaseSM : StateMachineBehaviour
         accuracy = enemy.GetComponent<EnemyAI>().GetAccuracy();
         moveSpeed = enemy.GetComponent<EnemyAI>().GetMoveSpeed();
         rotationSpeed = enemy.GetComponent<EnemyAI>().GetRotationSpeed();
+        rb = enemy.GetComponent<EnemyAI>().GetRigidBody();
     }
 
    
