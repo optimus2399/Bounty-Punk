@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] float speed = 1f;
+    [SerializeField] float damage = 20f;
+
 
     private void Start()
     {
@@ -16,5 +18,18 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         transform.position += transform.right * speed;
+     
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var health = other.gameObject.GetComponent<HealthSystem>();
+        if (health)
+        {
+            health.DealDamage(damage);
+            Destroy(gameObject);
+        }
+    }
+
+
 }
