@@ -23,12 +23,20 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var health = other.gameObject.GetComponent<HealthSystem>();
-        if (health)
+        if (other.gameObject.name == "base1")
         {
-            health.DealDamage(damage);
             Destroy(gameObject);
         }
+        
+        
+            var health = other.gameObject.GetComponent<HealthSystem>();
+            if (health)
+            {
+                health.DealDamage(damage);
+                Destroy(gameObject);
+            }
+        
+        
     }
 
 

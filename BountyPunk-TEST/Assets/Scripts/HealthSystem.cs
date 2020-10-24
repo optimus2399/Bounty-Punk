@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] float health = 100f;
+    [SerializeField] float health;
+    [SerializeField] float maxHealth = 100f;
     [SerializeField] GameObject Death;
+    [SerializeField] GameObject bloodParticle;
     [SerializeField] GameObject deathPos;
+    [SerializeField] GameObject bloodPos;
+    [SerializeField] HealthBar healthBar;
     // Start is called before the first frame update
     void Start()
     {
-
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void DealDamage(float damage)
     {
         health -= damage;
+        healthBar.SetHealth(health);
+        StartCoroutine(BloodParticle());
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -24,6 +31,13 @@ public class HealthSystem : MonoBehaviour
         
 
         
+    }
+
+    private IEnumerator BloodParticle()
+    {
+        GameObject blood = Instantiate(bloodParticle, bloodPos.transform.position, bloodPos.transform.rotation)as GameObject;
+        yield return new WaitForSeconds(1);
+        Destroy(blood);
     }
 
     // Update is called once per frame
