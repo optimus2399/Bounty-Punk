@@ -19,6 +19,10 @@ MonoBehaviour:
   bullet: {fileID: 0}
   firePoint: {fileID: 0}
   waypoints: []
+  accuracy: 0
+  moveSpeed: 0
+  rotationSpeed: 0
+  rb: {fileID: 0}
 --- !u!1107 &-8984251211800188101
 AnimatorStateMachine:
   serializedVersion: 5
@@ -37,6 +41,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 8414761558037388187}
     m_Position: {x: 160, y: 250, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -6407210957340258154}
+    m_Position: {x: 460, y: 250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:
@@ -73,6 +80,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-6407210957340258154
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Death
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-4145328894352377622
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -213,6 +246,10 @@ MonoBehaviour:
   bullet: {fileID: 0}
   firePoint: {fileID: 0}
   waypoints: []
+  accuracy: 0
+  moveSpeed: 0
+  rotationSpeed: 0
+  rb: {fileID: 0}
 --- !u!114 &3613431290102601688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,6 +269,10 @@ MonoBehaviour:
   bullet: {fileID: 0}
   firePoint: {fileID: 0}
   waypoints: []
+  accuracy: 0
+  moveSpeed: 0
+  rotationSpeed: 0
+  rb: {fileID: 0}
 --- !u!1101 &4081735767870850242
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
