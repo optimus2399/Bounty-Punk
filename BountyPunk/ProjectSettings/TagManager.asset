@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Load1
   - Load2
+  - Waypoint
   layers:
   - Default
   - TransparentFX
