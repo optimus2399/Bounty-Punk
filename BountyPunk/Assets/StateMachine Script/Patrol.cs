@@ -34,12 +34,12 @@ public class Patrol : EnemyBaseSM
                 currentWP = 0;
             }
         }
-        //agent.SetDestination(waypoints[currentWP].transform.position);
+        agent.SetDestination(waypoints[currentWP].transform.position);
 
         var direction = waypoints[currentWP].transform.position - enemy.transform.position;
         //rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
         enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed* Time.deltaTime);
-        enemy.transform.Translate(0f, 0f, moveSpeed *Time.deltaTime);
+        //enemy.transform.Translate(0f, 0f, moveSpeed *Time.deltaTime);
         
         
     }
