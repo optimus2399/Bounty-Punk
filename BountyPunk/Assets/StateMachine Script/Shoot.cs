@@ -8,9 +8,12 @@ public class Shoot : EnemyBaseSM
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         base.OnStateEnter(animator, stateInfo, layerIndex);
         gun = Instantiate(pistol, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
         enemy.GetComponent<EnemyAI>().StartFiring();
+        agent.speed = 0f;
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,6 +24,7 @@ public class Shoot : EnemyBaseSM
         //enemy.transform.LookAt(new Vector3(player.transform.position.x,enemy.transform.position.y,player.transform.position.z));
         gun.transform.position = firePoint.transform.position;
         gun.transform.rotation = firePoint.transform.rotation;
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
