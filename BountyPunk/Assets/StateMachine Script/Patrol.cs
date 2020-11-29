@@ -16,7 +16,9 @@ public class Patrol : EnemyBaseSM
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        
+        agent.speed = 2f;
+        agent.stoppingDistance = 1f;
+        agent.acceleration = 3f;
         currentWP = 0;
     }
 

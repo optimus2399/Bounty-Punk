@@ -13,6 +13,8 @@ public class Shoot : EnemyBaseSM
         gun = Instantiate(pistol, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
         enemy.GetComponent<EnemyAI>().StartFiring();
         agent.speed = 0f;
+        agent.stoppingDistance = 4f;
+        agent.acceleration = 20f;
         
     }
 

@@ -14,7 +14,9 @@ public class Chase : EnemyBaseSM
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         gun =  Instantiate(pistol, firePoint.transform.position,firePoint.transform.rotation) as GameObject;
-        agent.speed = 2f;
+        agent.stoppingDistance = 4f;
+        agent.speed = 3f;
+        agent.acceleration = 4f;
         
     }
 
