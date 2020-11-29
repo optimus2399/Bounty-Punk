@@ -6,6 +6,8 @@ public class GunRange : MonoBehaviour
 {
     public Loader loader;
     [SerializeField] GameObject pc;
+    [SerializeField] GameObject hologram;
+    [SerializeField] GameObject holoSpawn;
     bool inRange = false;
     private void OnTriggerEnter(Collider other)
     {
@@ -22,6 +24,7 @@ public class GunRange : MonoBehaviour
         {
             loader.Load4();
             pc.SetActive(true);
+            GameObject holo = Instantiate(hologram, holoSpawn.transform.position,holoSpawn.transform.rotation) as GameObject;
             this.gameObject.SetActive(false);
         }
     }

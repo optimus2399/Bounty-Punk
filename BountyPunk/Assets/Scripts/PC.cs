@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PC : MonoBehaviour
 {
     public Loader loader;
     [SerializeField] GameObject car;
     [SerializeField] GameObject bountyUI;
+    public int level = 1;
     bool inRange = false;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
@@ -46,4 +48,16 @@ public class PC : MonoBehaviour
             Load5();
         }
     }
+
+    public void LoadBountyOne()
+    {
+        level = 1;
+        Debug.Log("1");
+    }
+
+    public int GetLevel()
+    {
+        return level;
+    }
 }
+
