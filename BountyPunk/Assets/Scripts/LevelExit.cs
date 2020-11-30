@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class LevelExit : MonoBehaviour
 {
     public Loader loader;
-    public int currentLevel;
-     
     bool inRange = false;
+    public PC pc;
+
     private void OnTriggerEnter(Collider other)
     {
         inRange = true;
@@ -19,7 +19,8 @@ public class LevelExit : MonoBehaviour
     }
     private void Start()
     {
-        currentLevel = GetComponent<PC>().GetLevel();
+        GameObject level = GameObject.Find("level");
+        pc = level.GetComponent<PC>();
     }
 
     private void Update()
@@ -30,14 +31,14 @@ public class LevelExit : MonoBehaviour
         }
     }
 
-
     public void Exit()
     {
         if (Input.GetKey(KeyCode.E))
         {
             Debug.Log("yes@!");
-            if ( currentLevel == 1)
+            if ( pc.level == 0 )
             {
+                Debug.Log("exit"); 
                 SceneManager.LoadScene("BountyOne");
             }
         }

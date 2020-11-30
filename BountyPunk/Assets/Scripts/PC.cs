@@ -8,7 +8,7 @@ public class PC : MonoBehaviour
     public Loader loader;
     [SerializeField] GameObject car;
     [SerializeField] GameObject bountyUI;
-    public int level = 1;
+    public int level = 0;
     bool inRange = false;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
@@ -51,7 +51,7 @@ public class PC : MonoBehaviour
 
     public void LoadBountyOne()
     {
-        level = 1;
+        level = 0;
         Debug.Log("1");
     }
 
