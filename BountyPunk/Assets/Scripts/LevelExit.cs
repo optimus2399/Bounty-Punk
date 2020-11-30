@@ -7,7 +7,7 @@ public class LevelExit : MonoBehaviour
 {
     public Loader loader;
     bool inRange = false;
-    public PC pc;
+    string level;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,10 +17,10 @@ public class LevelExit : MonoBehaviour
     {
         inRange = false;
     }
-    private void Start()
+    
+    public void SetLevel(string sceneToSelect)
     {
-        GameObject level = GameObject.Find("level");
-        pc = level.GetComponent<PC>();
+        level = sceneToSelect;
     }
 
     private void Update()
@@ -31,16 +31,13 @@ public class LevelExit : MonoBehaviour
         }
     }
 
+
+
     public void Exit()
     {
         if (Input.GetKey(KeyCode.E))
         {
-            Debug.Log("yes@!");
-            if ( pc.level == 0 )
-            {
-                Debug.Log("exit"); 
-                SceneManager.LoadScene("BountyOne");
-            }
+            SceneManager.LoadScene(level);
         }
     }
 }

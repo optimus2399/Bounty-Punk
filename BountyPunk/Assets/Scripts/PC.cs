@@ -8,7 +8,6 @@ public class PC : MonoBehaviour
     public Loader loader;
     [SerializeField] GameObject car;
     [SerializeField] GameObject bountyUI;
-    public int level = 0;
     bool inRange = false;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
@@ -41,6 +40,19 @@ public class PC : MonoBehaviour
 
     }
 
+    public void Level1()
+    {
+        FindObjectOfType<LevelExit>().SetLevel("BountyOne");
+    }
+    public void Level2()
+    { 
+        FindObjectOfType<LevelExit>().SetLevel("BountyTwo");
+    }
+    public void Level3()
+    {
+        FindObjectOfType<LevelExit>().SetLevel("BountyThree");
+    }
+
     private void Update()
     {
         if (inRange)
@@ -49,15 +61,6 @@ public class PC : MonoBehaviour
         }
     }
 
-    public void LoadBountyOne()
-    {
-        level = 0;
-        Debug.Log("1");
-    }
-
-    public int GetLevel()
-    {
-        return level;
-    }
+   
 }
 

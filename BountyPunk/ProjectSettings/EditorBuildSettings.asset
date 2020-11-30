@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BountyOne.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/BountyTwo.unity
+    guid: 83c882869b0daf54d80b5c449e2ddd3e
+  - enabled: 1
+    path: Assets/Scenes/BountyThree.unity
+    guid: 6f20bcd9d3371f44babdade47d8dde84
   m_configObjects: {}
