@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "base1")
+        if (other.gameObject.name == "HouseMesh")
         {
             Destroy(gameObject);
         }
