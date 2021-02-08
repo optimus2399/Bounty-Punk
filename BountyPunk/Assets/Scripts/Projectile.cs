@@ -23,11 +23,12 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "HouseMesh")
-        {
-            Destroy(gameObject);
-        }
-        
+        /* if (other.gameObject.name == "HouseMesh")
+         {
+             Destroy(gameObject);
+         }*/
+        Debug.Log("hit");
+        Destroy(this.gameObject);
         
             var health = other.gameObject.GetComponent<HealthSystem>();
             if (health)
@@ -35,9 +36,8 @@ public class Projectile : MonoBehaviour
                 health.DealDamage(damage);
                 Destroy(gameObject);
             }
-        
-        
     }
-
-
+    
+    
+   
 }
