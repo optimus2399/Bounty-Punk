@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    Rigidbody rb;
+   
     [SerializeField] float speed = 1f;
     [SerializeField] float damage = 20f;
 
@@ -17,27 +17,53 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.right * speed;
+        transform.position += transform.right * speed*Time.deltaTime;
      
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        /* if (other.gameObject.name == "HouseMesh")
-         {
-             Destroy(gameObject);
-         }*/
-        Debug.Log("hit");
-        Destroy(this.gameObject);
+    /* private void OnTriggerEnter(Collider other)
+     {
+          if (other.gameObject.name == "HouseMesh")
+          {
+              Destroy(gameObject);
+          }
+         Debug.Log("hit");
+         Destroy(this.gameObject);
+
+             var health = other.gameObject.GetComponent<HealthSystem>();
+             if (health)
+             {
+                 health.DealDamage(damage);
+                 Destroy(gameObject);
+             }
+     }*/
+
+     private void OnCollisionEnter(Collision collision)
+     {
+        var health = collision.gameObject.GetComponent<HealthSystem>();
+        if (health)
+        {
+            Destroy(gameObject);
+            health.DealDamage(damage);
+            
+        }
+        else
+        {
+            Debug.Log(collision.gameObject.name);
+            Destroy(gameObject);
+        }
+       
         
-            var health = other.gameObject.GetComponent<HealthSystem>();
-            if (health)
-            {
-                health.DealDamage(damage);
-                Destroy(gameObject);
-            }
-    }
-    
-    
-   
+        // Destroy(collision.gameObject);
+     }
+
+  /*  private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        Destroy(gameObject);
+        Destroy(collision.gameObject);
+    }*/
+
+
+
 }
