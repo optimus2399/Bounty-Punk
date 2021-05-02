@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject pistol;
     public GameObject bullet;
     public GameObject firePoint;
-    GameObject[] waypoints;
+    public GameObject[] waypoints;
     Rigidbody rb;
 
     [Header("AI Settings")]
@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+        //waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
     }
     void Start()
     {

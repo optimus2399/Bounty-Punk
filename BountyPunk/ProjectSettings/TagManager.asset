@@ -7,6 +7,7 @@ TagManager:
   - Load1
   - Load2
   - Waypoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
