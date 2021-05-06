@@ -41,15 +41,14 @@ public class Projectile : MonoBehaviour
      private void OnCollisionEnter(Collision collision)
      {
         var health = collision.gameObject.GetComponent<HealthSystem>();
+       
         if (health)
         {
-            Destroy(gameObject);
             health.DealDamage(damage);
-            
+            Destroy(gameObject);
         }
         else
         {
-            Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
         }
        

@@ -11,21 +11,24 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] GameObject deathPos;
     [SerializeField] GameObject bloodPos;
     [SerializeField] HealthBar healthBar;
+    GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void DealDamage(float damage)
     {
         health -= damage;
         healthBar.SetHealth(health);
-        StartCoroutine(BloodParticle());
+       // StartCoroutine(BloodParticle());
         if (health <= 0)
         {
             Destroy(gameObject);
+            gameManager.EnemyDie();
             Instantiate(Death, deathPos.transform.position, deathPos.transform.rotation);
         }
         
