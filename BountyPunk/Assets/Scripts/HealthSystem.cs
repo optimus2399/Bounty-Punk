@@ -30,6 +30,7 @@ public class HealthSystem : MonoBehaviour
             Destroy(gameObject);
             gameManager.EnemyDie();
             Instantiate(Death, deathPos.transform.position, deathPos.transform.rotation);
+            
         }
         
 

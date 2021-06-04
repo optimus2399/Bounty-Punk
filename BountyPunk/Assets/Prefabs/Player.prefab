@@ -258,7 +258,7 @@ GameObject:
   m_Layer: 0
   m_Name: Death pos
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -270,7 +270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2570319433520681439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 0.7, z: 0.89}
+  m_LocalPosition: {x: 0.027, y: -1.27, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9000011997086242308}
@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 139781382}
   m_Layer: 0
   m_Name: mixamorig:Hips
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 891283922}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -947,14 +947,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb6bab8a3aff954ea282f2399230bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
   anim: {fileID: 8893710169064580198}
-  turnSmoothTime: 0.1
   pistolPrefab: {fileID: 142966297138009118, guid: 306a273d47f9d05418a4f24e22aaba49,
     type: 3}
   pistolPos: {fileID: 8893710169779585600}
   bulletPrefab: {fileID: 5674712307539860624, guid: 85b6773d8d9dfcd4f9799320e886a091,
     type: 3}
+  moveSpeed: 7
+  turnSmoothTime: 0.1
+  shootRange: 5
+  playerDamage: 10
   cam: {fileID: 0}
 --- !u!114 &891283922
 MonoBehaviour:
@@ -972,7 +974,7 @@ MonoBehaviour:
   maxHealth: 100
   Death: {fileID: 5671662662788594854, guid: 81df1ed0a8ad3624d9ce2eec98194f9c, type: 3}
   bloodParticle: {fileID: 0}
-  deathPos: {fileID: 0}
+  deathPos: {fileID: 2570319433520681439}
   bloodPos: {fileID: 0}
   healthBar: {fileID: 0}
 --- !u!1 &8751598247424848809

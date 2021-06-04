@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 14f;
+    [Header("Prefabs")]
+    
     [SerializeField] Animator anim;
-    [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] GameObject pistolPrefab;
     [SerializeField] Transform pistolPos;
+    [SerializeField] GameObject bulletPrefab;
     GameObject pistol;
     Rigidbody rb;
+
+    [Header("Values")]
+
+    [SerializeField] float moveSpeed = 14f;
+    [SerializeField] float turnSmoothTime = 0.1f;
+    [SerializeField] float shootRange = 5;
+    [SerializeField] float playerDamage = 10;
+
     Vector3 movement;
-    [SerializeField] GameObject bulletPrefab;
     private float turnSmoothVelocity;
     private Camera mainCamera;
     float rayLenght;
@@ -20,6 +28,7 @@ public class Player : MonoBehaviour
     bool isMoving = false;
     public Transform cam;
     private Vector3 velocity;
+    RaycastHit hit = new RaycastHit();
 
 
 
@@ -53,7 +62,7 @@ public class Player : MonoBehaviour
         if (groundPlane.Raycast(cameraRay, out rayLenght))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
-            Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
+            //Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
@@ -76,10 +85,19 @@ public class Player : MonoBehaviour
 
         if (pistol)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Physics.Raycast(pistolPos.position, pistolPos.forward, out hit, shootRange))
             {
-                GameObject bullet = Instantiate(bulletPrefab, pistol.transform.position, pistol.transform.rotation) as GameObject;
-            }
+                Debug.DrawRay(pistolPos.position, pistolPos.forward * shootRange, Color.red);
+                if(hit.transform.tag == "Enemy")
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        hit.transform.GetComponent<HealthSystem>().DealDamage(playerDamage);
+                        Debug.Log("Hit enemy");
+                    }
+                    Debug.Log("enemy detected");
+                }
+            } 
         }
 
         if (isAiming)

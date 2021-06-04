@@ -11,6 +11,7 @@ public class Shoot : EnemyBaseSM
         
         base.OnStateEnter(animator, stateInfo, layerIndex);
         gun = Instantiate(pistol, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
+        gun.transform.SetParent(firePoint.transform);
         enemy.GetComponent<EnemyAI>().StartFiring();
         agent.speed = 0f;
         agent.stoppingDistance = 4f;

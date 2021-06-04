@@ -16,12 +16,15 @@ public class EnemyAI : MonoBehaviour
     public GameObject firePoint;
     public GameObject[] waypoints;
     Rigidbody rb;
+    RaycastHit hit = new RaycastHit();
 
     [Header("AI Settings")]
 
     public float accuracy = 2f;
     public float moveSpeed = 5f;
     public float rotationSpeed = 2f;
+    public float enemyDamage = 10;
+    public float shootRange = 5f;
     
     public GameObject GetPlayer() { return player; }
     public NavMeshAgent GetAgent() { return agent; }
@@ -36,7 +39,14 @@ public class EnemyAI : MonoBehaviour
 
    public void Fire()
     {
-        GameObject projectile = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+        if (Physics.Raycast(firePoint.transform.position, firePoint.transform.right, out hit,shootRange))
+        {
+            if(hit.transform.tag == "Player")
+            {
+                hit.transform.GetComponent<HealthSystem>().DealDamage(enemyDamage);
+            }
+        }
+        //GameObject projectile = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
     }
 
     public void StartFiring()
