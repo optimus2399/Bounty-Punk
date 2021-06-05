@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject pistolPrefab;
     [SerializeField] Transform pistolPos;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] Slider Guncharge;
     GameObject pistol;
     Rigidbody rb;
 
@@ -19,6 +21,9 @@ public class Player : MonoBehaviour
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] float shootRange = 5;
     [SerializeField] float playerDamage = 10;
+    [SerializeField] float maxCooldown = 100;
+    [SerializeField] float cooldownDecreaseValue = 10;
+    [SerializeField] float cooldownIncreaseRate = 0.2f;
 
 
     Vector3 movement;
@@ -52,6 +57,11 @@ public class Player : MonoBehaviour
     {
         Move();
         CheckAiming();
+        if(maxCooldown < 100)
+        {
+            maxCooldown += cooldownDecreaseValue * Time.fixedDeltaTime * cooldownIncreaseRate;
+            Guncharge.value = maxCooldown;
+        }
 
     }
 
@@ -63,8 +73,6 @@ public class Player : MonoBehaviour
         if (groundPlane.Raycast(cameraRay, out rayLenght))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
-            //Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
-
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
     }
@@ -86,19 +94,30 @@ public class Player : MonoBehaviour
 
         if (pistol)
         {
-            if (Physics.Raycast(pistolPos.position, pistolPos.forward, out hit, shootRange))
+            if(Physics.Raycast(pistolPos.position,pistolPos.forward))
             {
-                Debug.DrawRay(pistolPos.position, pistolPos.forward * shootRange, Color.red);
-                if(hit.transform.tag == "Enemy")
+                Debug.DrawRay(pistolPos.position, pistolPos.forward * shootRange, Color.green);
+            }
+            if (maxCooldown > 0)
+            {
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    maxCooldown -= cooldownDecreaseValue;
+                    
+                    if (Physics.Raycast(pistolPos.position, pistolPos.forward, out hit, shootRange))
                     {
-                        hit.transform.GetComponent<HealthSystem>().DealDamage(playerDamage);
-                        Debug.Log("Hit enemy");
+                        
+                        if (hit.transform.tag == "Enemy")
+                        {
+                            hit.transform.GetComponent<HealthSystem>().DealDamage(playerDamage);
+                            
+                        }
+                      
                     }
-                    Debug.Log("enemy detected");
                 }
-            } 
+                    
+            }
+            
         }
 
         if (isAiming)

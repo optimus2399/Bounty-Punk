@@ -10,7 +10,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] GameObject bloodParticle;
     [SerializeField] GameObject deathPos;
     [SerializeField] GameObject bloodPos;
-    [SerializeField] HealthBar healthBar;
+    [SerializeField] SliderManager healthBar;
     GameManager gameManager;
     // Start is called before the first frame update
     void Start()

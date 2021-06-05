@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class SliderManager : MonoBehaviour
 {
-    [SerializeField] Slider slider;
+    [SerializeField] Slider healthSlider;
+    
     
     public void SetHealth(float health)
     {
-        slider.value = health;
+        healthSlider.value = health;
     }
 
     public void SetMaxHealth(float health)
     {
-        slider.maxValue = health;
-        slider.value = health;
+        healthSlider.maxValue = health;
+        healthSlider.value = health;
     }
+
+    
 }
