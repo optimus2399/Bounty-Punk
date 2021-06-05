@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] float shootRange = 5;
     [SerializeField] float playerDamage = 10;
 
+
     Vector3 movement;
     private float turnSmoothVelocity;
     private Camera mainCamera;
