@@ -10,8 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] GameObject pistolPrefab;
     [SerializeField] Transform pistolPos;
-    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject lineRender;
     [SerializeField] Slider Guncharge;
+    [SerializeField] GameObject bulletPos;
     GameObject pistol;
     Rigidbody rb;
 
@@ -103,6 +104,9 @@ public class Player : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     maxCooldown -= cooldownDecreaseValue;
+                    Instantiate(lineRender, bulletPos.transform.position,bulletPos.transform.rotation);
+
+                    
                     
                     if (Physics.Raycast(pistolPos.position, pistolPos.forward, out hit, shootRange))
                     {

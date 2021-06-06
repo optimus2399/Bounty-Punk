@@ -2919,7 +2919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.5195279, y: 0.005394566, z: -0.0032731208, w: 0.8544302}
-  m_LocalPosition: {x: -12.072956, y: 9.04, z: -15.695743}
+  m_LocalPosition: {x: -10.87, y: 8.54, z: -18.03}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5049,6 +5049,36 @@ Transform:
   m_Father: {fileID: 222029047}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2035143405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2035143406}
+  m_Layer: 0
+  m_Name: BulletPos
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2035143406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035143405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.17, y: 0.85, z: 1.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1091290831}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2041789939
 GameObject:
   m_ObjectHideFlags: 0
@@ -5200,6 +5230,11 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 1057977247399165642, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.44
+      objectReference: {fileID: 0}
     - target: {fileID: 8623733127227116734, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
         type: 3}
       propertyPath: m_Name
@@ -5215,6 +5250,17 @@ PrefabInstance:
       propertyPath: Guncharge
       value: 
       objectReference: {fileID: 423027094}
+    - target: {fileID: 8893710169064580197, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
+        type: 3}
+      propertyPath: bulletPos
+      value: 
+      objectReference: {fileID: 2035143405}
+    - target: {fileID: 8893710169064580197, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
+        type: 3}
+      propertyPath: lineRender
+      value: 
+      objectReference: {fileID: 5674712307539860624, guid: 85b6773d8d9dfcd4f9799320e886a091,
+        type: 3}
     - target: {fileID: 8893710169064580197, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
         type: 3}
       propertyPath: cooldownValue
@@ -5243,7 +5289,7 @@ PrefabInstance:
     - target: {fileID: 9000011997086242308, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.84
+      value: -15.7
       objectReference: {fileID: 0}
     - target: {fileID: 9000011997086242308, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
         type: 3}
