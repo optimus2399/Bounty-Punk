@@ -17,6 +17,8 @@ public class EnemyAI : MonoBehaviour
     public GameObject[] waypoints;
     Rigidbody rb;
     RaycastHit hit = new RaycastHit();
+    [SerializeField] GameObject lineRender;
+    
 
     [Header("AI Settings")]
 
@@ -43,6 +45,7 @@ public class EnemyAI : MonoBehaviour
         {
             if(hit.transform.tag == "Player")
             {
+                Instantiate(bullet, lineRender.transform.position, lineRender.transform.rotation);
                 hit.transform.GetComponent<HealthSystem>().DealDamage(enemyDamage);
             }
         }
