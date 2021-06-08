@@ -33,8 +33,6 @@ public class HealthSystem : MonoBehaviour
             
         }
         
-
-        
     }
 
     private IEnumerator BloodParticle()
