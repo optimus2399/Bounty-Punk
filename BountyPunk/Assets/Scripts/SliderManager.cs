@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class SliderManager : MonoBehaviour
 {
     [SerializeField] Slider healthSlider;
-    
-    
     public void SetHealth(float health)
     {
         healthSlider.value = health;
@@ -17,7 +15,5 @@ public class SliderManager : MonoBehaviour
     {
         healthSlider.maxValue = health;
         healthSlider.value = health;
-    }
-
-    
+    } 
 }

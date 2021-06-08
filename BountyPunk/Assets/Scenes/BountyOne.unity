@@ -1678,12 +1678,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee01fb041d3f3c44b46d3aabba46a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1091290831}
   smoothSpeed: 25
+  rotateSpeed: 5
+  target: {fileID: 1091290831}
   offset: {x: 0, y: 0, z: 0}
   lookAtPlayer: 1
   rotateAroundPlayer: 1
-  rotateSpeed: 5
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2132,11 +2132,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
-  Death: {fileID: 68191575808965984, guid: 0eb7b3468f4dce443af7214945d302b9, type: 3}
-  bloodParticle: {fileID: 0}
-  deathPos: {fileID: 529273977}
-  bloodPos: {fileID: 0}
   healthBar: {fileID: 1358971654}
+  Death: {fileID: 68191575808965984, guid: 0eb7b3468f4dce443af7214945d302b9, type: 3}
+  deathPos: {fileID: 529273977}
+  bloodParticle: {fileID: 0}
+  bloodPos: {fileID: 0}
 --- !u!4 &1605875203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2649382261987431800, guid: 4376d88f06582a846b65be5d636dba47,
@@ -2527,8 +2527,13 @@ PrefabInstance:
     - target: {fileID: 8893710169064580197, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
         type: 3}
       propertyPath: cooldownValue
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8893710169064580197, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
+        type: 3}
+      propertyPath: GunChargeSlider
+      value: 
+      objectReference: {fileID: 423027094}
     - target: {fileID: 8893710169064580197, guid: b40f9e51ce9d6bf4882d49f6dc3338f2,
         type: 3}
       propertyPath: cooldownDecreaseValue

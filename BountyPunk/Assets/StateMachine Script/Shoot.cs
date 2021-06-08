@@ -23,11 +23,7 @@ public class Shoot : EnemyBaseSM
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var direction = player.transform.position - enemy.transform.position;
-        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(direction), 5f * Time.deltaTime);
-        
-        gun.transform.position = firePoint.transform.position;
-        gun.transform.rotation = firePoint.transform.rotation;
-        
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(direction), 5f * Time.deltaTime);    
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

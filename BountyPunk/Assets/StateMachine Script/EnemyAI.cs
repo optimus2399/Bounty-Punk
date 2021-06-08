@@ -7,17 +7,22 @@ using UnityEngine.UI;
 public class EnemyAI : MonoBehaviour
 {
     [Header("Refrences")]
-
     public GameObject player;
     public NavMeshAgent agent;
-    Animator anim;
+    
+    [Header("Gun")]
     public GameObject pistol;
     public GameObject bullet;
     public GameObject firePoint;
+    public GameObject lineRender;
+
     public GameObject[] waypoints;
+
+    //Private DataType
     Rigidbody rb;
+    Animator anim;
     RaycastHit hit = new RaycastHit();
-    [SerializeField] GameObject lineRender;
+  
     
 
     [Header("AI Settings")]
@@ -48,8 +53,7 @@ public class EnemyAI : MonoBehaviour
                 Instantiate(bullet, lineRender.transform.position, lineRender.transform.rotation);
                 hit.transform.GetComponent<HealthSystem>().DealDamage(enemyDamage);
             }
-        }
-        //GameObject projectile = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+        }      
     }
 
     public void StartFiring()
@@ -60,19 +64,12 @@ public class EnemyAI : MonoBehaviour
     {
         CancelInvoke("Fire");
     }
-    // Start is called before the first frame update
 
-    private void Awake()
-    {
-        //waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
-    }
     void Start()
     {
         anim = GetComponent<Animator>();
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
         anim.SetFloat("Distance", Vector3.Distance(transform.position, player.transform.position));

@@ -39,11 +39,7 @@ public class Patrol : EnemyBaseSM
         agent.SetDestination(waypoints[currentWP].transform.position);
 
         var direction = waypoints[currentWP].transform.position - enemy.transform.position;
-        //rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
-        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed* Time.deltaTime);
-        //enemy.transform.Translate(0f, 0f, moveSpeed *Time.deltaTime);
-        
-        
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed* Time.deltaTime);  
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

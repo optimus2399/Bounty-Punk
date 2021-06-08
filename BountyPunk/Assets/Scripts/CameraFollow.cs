@@ -6,21 +6,20 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform target;
+    [Header("SetCamera")]
     public float smoothSpeed = 25f;
+    public float rotateSpeed = 5f;
+    [SerializeField] Transform target;
     public UnityEngine.Vector3 offset;
+
+    [Header("SetBool")]
     public bool lookAtPlayer = false;
     public bool rotateAroundPlayer = false;
-    public float rotateSpeed = 5f;
+   
 
     private void Start()
     {
         offset = transform.position - target.position;
-    }
-    private void Update()
-    {
-        
-
     }
 
     private void LateUpdate()
@@ -31,7 +30,8 @@ public class CameraFollow : MonoBehaviour
         {
             if (rotateAroundPlayer)
             {
-                UnityEngine.Quaternion camTurnAngle = UnityEngine.Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotateSpeed, UnityEngine.Vector3.up);
+                UnityEngine.Quaternion camTurnAngle = UnityEngine.Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotateSpeed, 
+                    UnityEngine.Vector3.up);
                 offset = camTurnAngle * offset;
             }
           

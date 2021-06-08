@@ -26,12 +26,7 @@ public class Chase : EnemyBaseSM
     {
         var direction = player.transform.position - enemy.transform.position;
         enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
-
-        //rb.MovePosition(rb.position + direction * moveSpeed *Time.deltaTime);
-        //enemy.transform.Translate(0f, 0f, moveSpeed * Time.deltaTime);
         agent.SetDestination(player.transform.position);
-        gun.transform.position = firePoint.transform.position;
-        gun.transform.rotation = firePoint.transform.rotation;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
