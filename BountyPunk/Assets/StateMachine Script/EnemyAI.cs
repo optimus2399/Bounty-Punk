@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     public GameObject bullet;
     public GameObject firePoint;
     public GameObject lineRender;
+    public AudioClip shootSFX;
+    [Range(0, 1)] public float shootSFXVolume;
 
     public GameObject[] waypoints;
 
@@ -52,6 +54,7 @@ public class EnemyAI : MonoBehaviour
             {
                 Instantiate(bullet, lineRender.transform.position, lineRender.transform.rotation);
                 hit.transform.GetComponent<HealthSystem>().DealDamage(enemyDamage);
+                AudioSource.PlayClipAtPoint(shootSFX, transform.position, shootSFXVolume);
             }
         }      
     }

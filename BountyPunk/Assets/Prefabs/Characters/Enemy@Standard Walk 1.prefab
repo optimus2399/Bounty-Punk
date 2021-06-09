@@ -102,6 +102,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 46172347}
+--- !u!1 &529273977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529273978}
+  m_Layer: 0
+  m_Name: DeathPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &529273978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529273977}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.023, y: -1.27, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2649382261987431800}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &977656674
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.13, y: 3.28}
+  m_AnchoredPosition: {x: 0.39, y: 2}
   m_SizeDelta: {x: 799.6974, y: 316.1876}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &977656678
@@ -743,7 +773,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7535698576391091692}
   - component: {fileID: 1178249582}
-  - component: {fileID: 2110738923}
   m_Layer: 0
   m_Name: mixamorig:Hips
   m_TagString: Enemy
@@ -777,30 +806,11 @@ CapsuleCollider:
   m_GameObject: {fileID: 3191863291293658265}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2.732493
   m_Direction: 1
   m_Center: {x: 1.2524341e-10, y: 0.24014282, z: 1.4879717e-10}
---- !u!114 &2110738923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191863291293658265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8483cad14f181444ea25a303d827983d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 100
-  Death: {fileID: 0}
-  bloodParticle: {fileID: 0}
-  deathPos: {fileID: 0}
-  bloodPos: {fileID: 0}
-  healthBar: {fileID: 46172346}
 --- !u!1 &3427150865021734850
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +823,8 @@ GameObject:
   - component: {fileID: 2544188938862000382}
   - component: {fileID: 2544188938862000380}
   - component: {fileID: 2544188938862000378}
+  - component: {fileID: 1605875205}
+  - component: {fileID: 1605875200}
   m_Layer: 0
   m_Name: Enemy@Standard Walk 1
   m_TagString: Enemy
@@ -836,6 +848,7 @@ Transform:
   - {fileID: 4964763214627832109}
   - {fileID: 977656675}
   - {fileID: 1228567904}
+  - {fileID: 529273978}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -873,13 +886,15 @@ MonoBehaviour:
   player: {fileID: 0}
   agent: {fileID: 2544188938862000378}
   pistol: {fileID: 142966297138009118, guid: 306a273d47f9d05418a4f24e22aaba49, type: 3}
-  bullet: {fileID: 5674712307539860624, guid: 85b6773d8d9dfcd4f9799320e886a091, type: 3}
+  bullet: {fileID: 5674712307539860624, guid: 73046ae81d55ff54baf6065e0f3b1076, type: 3}
   firePoint: {fileID: 4964763214627832108}
+  lineRender: {fileID: 1228567903}
+  shootSFX: {fileID: 8300000, guid: 2e77293b7a1ee5f48a2aaa65f08bfd4f, type: 3}
+  shootSFXVolume: 0.5
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  lineRender: {fileID: 1228567903}
   accuracy: 2
   moveSpeed: 5
   rotationSpeed: 2
@@ -907,6 +922,39 @@ NavMeshAgent:
   m_BaseOffset: 1.2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &1605875205
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3427150865021734850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3.2915266
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.4665827, z: 0}
+--- !u!114 &1605875200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3427150865021734850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8483cad14f181444ea25a303d827983d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
+  healthBar: {fileID: 46172346}
+  Death: {fileID: 68191575808965984, guid: 0eb7b3468f4dce443af7214945d302b9, type: 3}
+  deathPos: {fileID: 529273977}
+  bloodParticle: {fileID: 0}
+  bloodPos: {fileID: 0}
 --- !u!1 &3592666457931335038
 GameObject:
   m_ObjectHideFlags: 0

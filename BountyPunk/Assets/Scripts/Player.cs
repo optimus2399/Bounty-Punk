@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] Animator anim;
     [SerializeField] Transform cam;
+    [SerializeField] AudioClip footStepSFX;
+    [SerializeField] [Range(0, 1)] float footStepSFXVolume;
+    
 
     [Header("Gun")]
     [SerializeField] float shootRange = 5;
@@ -18,12 +21,21 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject lineRender;
     [SerializeField] Transform pistolPos;
     [SerializeField] GameObject bulletPos;
+    [SerializeField] AudioClip shootSFX;
+    [SerializeField] [Range(0,1)]float shootSFXVolume;
+    
 
     [Header("GunCharge")]
     [SerializeField] Slider GunChargeSlider;
-    [SerializeField] float cooldownValue = 100;
+    [SerializeField] float maxCooldownValue=100;
+    [SerializeField] float cooldownValue;
     [SerializeField] float cooldownDecreaseValue = 10;
     [SerializeField] float cooldownIncreaseRate = 0.2f;
+    [SerializeField] AudioClip gunChargeFull;
+    [SerializeField] [Range(0, 1)] float gunChargeFullVolume;
+    
+    
+
 
 
     //Private DataTypes
@@ -34,6 +46,8 @@ public class Player : MonoBehaviour
     float rayLenght;
     bool isAiming = false;
     bool isMoving = false;
+    
+    
  
     RaycastHit hit = new RaycastHit();
 
@@ -42,6 +56,9 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
         FreezeZrotation();
+        cooldownValue = maxCooldownValue;
+        
+        
     }
 
     void Update()
@@ -49,6 +66,8 @@ public class Player : MonoBehaviour
         Movement();
         CheckAiming();
         IncreaseGunCharge();
+        
+
     }
     private void FreezeZrotation()
     {
@@ -59,12 +78,15 @@ public class Player : MonoBehaviour
 
     private void IncreaseGunCharge()
     {
-        if (cooldownValue < 100)
+        if (cooldownValue < maxCooldownValue)
         {
-            cooldownValue += cooldownDecreaseValue * Time.fixedDeltaTime * cooldownIncreaseRate;
+            cooldownValue += cooldownDecreaseValue * Time.deltaTime * cooldownIncreaseRate;
             GunChargeSlider.value = cooldownValue;
         }
+       
     }
+
+    
 
 
     private void CheckAiming()
@@ -136,6 +158,7 @@ public class Player : MonoBehaviour
             {
                 cooldownValue -= cooldownDecreaseValue;
                 Instantiate(lineRender, bulletPos.transform.position, bulletPos.transform.rotation);
+                AudioSource.PlayClipAtPoint(shootSFX,transform.position,shootSFXVolume);
 
                 if (Physics.Raycast(pistolPos.position, pistolPos.forward, out hit, shootRange))
                 {
@@ -180,5 +203,10 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, angle, 0);
         Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.deltaTime);
+    }
+
+    public void FootStepSFX()
+    {
+        AudioSource.PlayClipAtPoint(footStepSFX, transform.position, footStepSFXVolume);
     }
 }
