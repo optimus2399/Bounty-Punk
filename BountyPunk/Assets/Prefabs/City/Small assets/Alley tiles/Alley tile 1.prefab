@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3835697574950055747}
   - component: {fileID: 2156113454511658505}
   - component: {fileID: 3227312791177704093}
+  - component: {fileID: 5018863713897337920}
   m_Layer: 0
   m_Name: Alley tile 1
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5018863713897337920
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5444022786079571064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.24, y: 0.24000001, z: 3.8400002}
+  m_Center: {x: -17.48, y: 0.68, z: -9.92}
