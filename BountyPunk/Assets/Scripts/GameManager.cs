@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] int enemyDeathCount=0;
+     int enemyDeathCount=0;
     [SerializeField] GameObject[] barriers;
     [SerializeField] int[] totalEnemyCount;
 
