@@ -5,8 +5,8 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     [Header("SetHealth")]
-    [SerializeField] float health;
-    [SerializeField] float maxHealth = 100f;
+    public float health;
+    public float maxHealth = 100f;
     [SerializeField] SliderManager healthBar;
 
     [Header("Death")]
