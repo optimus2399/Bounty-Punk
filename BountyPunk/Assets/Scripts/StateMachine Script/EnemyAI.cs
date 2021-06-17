@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject pistol;
     public GameObject bullet;
     public GameObject firePoint;
+    public GameObject ray;
     public GameObject lineRender;
     public AudioClip shootSFX;
     [Range(0, 1)] public float shootSFXVolume;
@@ -48,15 +49,30 @@ public class EnemyAI : MonoBehaviour
 
    public void Fire()
     {
-        if (Physics.Raycast(firePoint.transform.position, firePoint.transform.right, out hit,shootRange))
+        if (Physics.Raycast(ray.transform.position, ray.transform.right, out hit,shootRange))
         {
+            
             if(hit.transform.tag == "Player")
             {
-                Instantiate(bullet, lineRender.transform.position, lineRender.transform.rotation);
                 hit.transform.GetComponent<HealthSystem>().DealDamage(enemyDamage);
-                AudioSource.PlayClipAtPoint(shootSFX, transform.position, shootSFXVolume);
             }
         }      
+    }
+
+    public void LineRenderer()
+    {
+        Instantiate(bullet, lineRender.transform.position, lineRender.transform.rotation);
+        AudioSource.PlayClipAtPoint(shootSFX, transform.position, shootSFXVolume);
+    }
+
+    public void StartSpray()
+    {
+        InvokeRepeating("LineRenderer", 0.5f, 0.5f);
+    }
+
+    public void StopSpray()
+    {
+        CancelInvoke("LineRenderer");
     }
 
     public void StartFiring()

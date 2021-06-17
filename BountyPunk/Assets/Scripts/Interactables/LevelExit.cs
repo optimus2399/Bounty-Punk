@@ -42,5 +42,10 @@ public class LevelExit : MonoBehaviour
         {
             SceneManager.LoadScene(level);
         }
+
+        if (this.gameObject.tag == "House")
+        {
+            Exit();
+        }
     }
 }

@@ -19,6 +19,11 @@ public class Buttons : MonoBehaviour
         Application.Quit();
     }
 
+    public void HouseButton()
+    {
+        SceneManager.LoadScene("House 1");
+    }
+
     public void PauseButton()
     {
         if (isPause)

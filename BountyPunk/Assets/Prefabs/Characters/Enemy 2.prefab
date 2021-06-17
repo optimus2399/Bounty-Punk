@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1385791094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1385791095}
+  m_Layer: 0
+  m_Name: Fire point (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1385791095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385791094}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.1170001, y: 0.617, z: 0.88}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 977976598137856584}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &368663401573342121
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,7 +83,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &977976598137856584
 Transform:
   m_ObjectHideFlags: 0
@@ -71,6 +101,7 @@ Transform:
   - {fileID: 6161523824327633898}
   - {fileID: 6161523823336643216}
   - {fileID: 6161523823765011779}
+  - {fileID: 1385791095}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -110,6 +141,7 @@ MonoBehaviour:
   pistol: {fileID: 142966297138009118, guid: 306a273d47f9d05418a4f24e22aaba49, type: 3}
   bullet: {fileID: 5674712307539860624, guid: 73046ae81d55ff54baf6065e0f3b1076, type: 3}
   firePoint: {fileID: 6161523822796329879}
+  ray: {fileID: 1385791094}
   lineRender: {fileID: 6161523823336643219}
   shootSFX: {fileID: 8300000, guid: 2e77293b7a1ee5f48a2aaa65f08bfd4f, type: 3}
   shootSFXVolume: 0.5
@@ -971,7 +1003,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -1.0099983, y: 0}
   m_SizeDelta: {x: 5.4776993, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

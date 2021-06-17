@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] barriers;
     [SerializeField] int[] totalEnemyCount;
     Buttons buttons;
+    [SerializeField] GameObject boss;
+    [SerializeField] GameObject levelCompleteCanvas;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject gameOverCanvas;
     private void Awake()
     {
         Time.timeScale = 1;
@@ -20,6 +24,15 @@ public class GameManager : MonoBehaviour
   
     void Update()
     {
+        if (boss == null)
+        {
+            StartCoroutine(LevelComplete());
+        }
+
+        if (player == null)
+        {
+            StartCoroutine(GameOver());
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             buttons.PauseButton();
@@ -32,6 +45,20 @@ public class GameManager : MonoBehaviour
                 Destroy(barriers[i].gameObject);
             }  
         }
+    }
+
+    IEnumerator LevelComplete()
+    {
+        yield return new WaitForSeconds(4);
+        levelCompleteCanvas.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(4);
+        gameOverCanvas.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void EnemyDie()

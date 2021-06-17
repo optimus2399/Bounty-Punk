@@ -8,6 +8,7 @@ TagManager:
   - Load2
   - Waypoint
   - Enemy
+  - House
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class Shoot : EnemyBaseSM
         gun = Instantiate(pistol, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
         gun.transform.SetParent(firePoint.transform);
         enemy.GetComponent<EnemyAI>().StartFiring();
+        enemy.GetComponent<EnemyAI>().StartSpray();
         agent.speed = 0f;
         agent.stoppingDistance = 4f;
         agent.acceleration = 20f;
@@ -30,6 +31,7 @@ public class Shoot : EnemyBaseSM
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemy.GetComponent<EnemyAI>().StopFiring();
+        enemy.GetComponent<EnemyAI>().StopSpray();
         Destroy(gun);
     }
 

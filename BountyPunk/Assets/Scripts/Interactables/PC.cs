@@ -56,11 +56,25 @@ public class PC : MonoBehaviour
         FindObjectOfType<LevelExit>().SetLevel("BountyThree");
     }
 
+    private void Pc()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            Time.timeScale = 0;
+            bountyUI.SetActive(true);
+        }
+    }
+
     private void Update()
     {
         if (inRange)
         {
             Load5();
+        }
+
+        if (this.gameObject.tag == "House")
+        {
+            Pc();
         }
     }
 

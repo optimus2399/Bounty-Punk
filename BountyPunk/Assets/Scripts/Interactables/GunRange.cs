@@ -33,11 +33,14 @@ public class GunRange : MonoBehaviour
         }
     }
 
+
+
     private void Update()
     {
         if (inRange)
         {
             Load4();
-        } 
+        }
+        
     }
 }

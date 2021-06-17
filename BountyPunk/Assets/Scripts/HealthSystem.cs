@@ -35,7 +35,15 @@ public class HealthSystem : MonoBehaviour
         {
             Destroy(gameObject);
             gameManager.EnemyDie();
-            Instantiate(Death, deathPos.transform.position, deathPos.transform.rotation);
+            if (Death == null)
+            {
+                return;
+            }
+            else
+            {
+                Instantiate(Death, deathPos.transform.position, deathPos.transform.rotation);
+            }
+            
         }
     }
 
