@@ -7910,7 +7910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bounty Selected
+  m_Text: Select Bounty and go to the Car
 --- !u!222 &1226331320
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10059,8 +10059,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 167.36, y: -37.19}
-  m_SizeDelta: {x: 302.64093, y: 56.63755}
+  m_AnchoredPosition: {x: 267.21, y: -52.87}
+  m_SizeDelta: {x: 502.3382, y: 87.98937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1573766414
 MonoBehaviour:

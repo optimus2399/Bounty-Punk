@@ -3088,6 +3088,16 @@ PrefabInstance:
       propertyPath: m_Colors.m_SelectedColor.r
       value: 0.7830189
       objectReference: {fileID: 0}
+    - target: {fileID: 8398665246892535753, guid: 092d7b7c8a0ba7944a586631cd7b93d4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1021379843}
+    - target: {fileID: 8398665246892535753, guid: 092d7b7c8a0ba7944a586631cd7b93d4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitUi
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 092d7b7c8a0ba7944a586631cd7b93d4, type: 3}
 --- !u!1 &508282526
