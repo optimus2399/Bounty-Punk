@@ -3008,6 +3008,16 @@ PrefabInstance:
       propertyPath: m_Colors.m_SelectedColor.r
       value: 0.735849
       objectReference: {fileID: 0}
+    - target: {fileID: 8398665245761669967, guid: 092d7b7c8a0ba7944a586631cd7b93d4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1021379843}
+    - target: {fileID: 8398665245761669967, guid: 092d7b7c8a0ba7944a586631cd7b93d4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 8398665245787687280, guid: 092d7b7c8a0ba7944a586631cd7b93d4,
         type: 3}
       propertyPath: m_Name
@@ -3087,6 +3097,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
       value: 0.7830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398665246529357015, guid: 092d7b7c8a0ba7944a586631cd7b93d4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1021379843}
+    - target: {fileID: 8398665246529357015, guid: 092d7b7c8a0ba7944a586631cd7b93d4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 8398665246892535753, guid: 092d7b7c8a0ba7944a586631cd7b93d4,
         type: 3}
@@ -4537,7 +4557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76009de75f48f9245bcb53e628718b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loader: {fileID: 1489533537}
+  loader: {fileID: 0}
   InteractableUI: {fileID: 1257648517}
 --- !u!1 &789566511
 GameObject:
@@ -5829,7 +5849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9758597f3b6ba43b96bade2c618cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loader: {fileID: 1489533537}
+  loader: {fileID: 0}
   car: {fileID: 767127219}
   bountyUI: {fileID: 97114353}
   InteractableUI: {fileID: 1257648517}
@@ -8910,56 +8930,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1103649069}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1489533536
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1489533538}
-  - component: {fileID: 1489533537}
-  m_Layer: 0
-  m_Name: Tutorial Ui loader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1489533537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489533536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd886043280b2ba429b040c2374a2463, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  load1: {fileID: 0}
-  load2: {fileID: 0}
-  load3: {fileID: 0}
-  load4: {fileID: 0}
-  load5: {fileID: 0}
-  load6: {fileID: 0}
-  textDelay: 3
---- !u!4 &1489533538
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489533536}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1406646, y: 2.47391, z: 1.6267579}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1699022442}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1509641385
 GameObject:
   m_ObjectHideFlags: 0
@@ -10087,7 +10057,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1604580902}
-  - {fileID: 1489533538}
   - {fileID: 97114354}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -11295,7 +11264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f1b2d39c177f94e82610372992c5bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loader: {fileID: 1489533537}
+  loader: {fileID: 0}
   pc: {fileID: 1021379842}
   hologram: {fileID: 9028550952372257798, guid: efb262c8f22233d46a704ea7efd41e57,
     type: 3}

@@ -9,6 +9,8 @@ TagManager:
   - Waypoint
   - Enemy
   - House
+  - Barrier
+  - VendingMachine
   layers:
   - Default
   - TransparentFX

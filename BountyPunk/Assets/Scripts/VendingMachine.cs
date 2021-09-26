@@ -6,26 +6,52 @@ using UnityEngine.UI;
 public class VendingMachine : MonoBehaviour
 {
 
-    [SerializeField] GameObject canvas;
+    [SerializeField] GameObject vendingMachineCanvas;
+    [SerializeField] GameObject barrierCanvas;
     [SerializeField] GameObject player;
     [SerializeField] SliderManager slider;
     bool isRange = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (this.gameObject.tag == "VendingMachine")
         {
-            isRange = true;
-            canvas.SetActive(true);
+            if (other.gameObject.tag == "Player")
+            {
+                isRange = true;
+                vendingMachineCanvas.SetActive(true);
+            }
         }
+
+        if (this.gameObject.tag == "Barrier")
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                barrierCanvas.SetActive(true);
+            }
+               
+        }
+     
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (this.gameObject.tag == "VendingMachine")
         {
-            isRange = false;
-            canvas.SetActive(false);
+            if (other.gameObject.tag == "Player")
+            {
+                isRange = false;
+                vendingMachineCanvas.SetActive(false);
+            }
+        }
+
+        if (this.gameObject.tag == "Barrier")
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                barrierCanvas.SetActive(false);
+            }
+
         }
     }
 

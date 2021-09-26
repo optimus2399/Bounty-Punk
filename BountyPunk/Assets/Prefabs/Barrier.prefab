@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 7344325836995857}
   - component: {fileID: 7344325836995858}
   - component: {fileID: 7344325836995859}
+  - component: {fileID: 3423136365862962607}
+  - component: {fileID: 2206918267269555857}
   m_Layer: 0
   m_Name: Barrier
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -83,6 +85,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7344325836995859
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7344325836995861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.8519924}
+  m_Center: {x: 0, y: 0, z: 0.13202903}
+--- !u!114 &3423136365862962607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7344325836995861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5375626910427334487567abe6eaebdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vendingMachineCanvas: {fileID: 211972037206138868, guid: aab8d859c51e8824a8962402cd538e88,
+    type: 3}
+  barrierCanvas: {fileID: 517733000577889612, guid: 81fc2a974454fe64b85eca7b46104668,
+    type: 3}
+  player: {fileID: 8623733127227116734, guid: b40f9e51ce9d6bf4882d49f6dc3338f2, type: 3}
+  slider: {fileID: 0}
+--- !u!65 &2206918267269555857
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
